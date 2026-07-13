@@ -1,4 +1,4 @@
-﻿$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Stop"
 
 $repo = "mindronserver/AI_Worker_Release"
 $tag = "windows-agent-latest"
