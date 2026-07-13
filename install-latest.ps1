@@ -16,7 +16,7 @@ Write-Host "Downloading $downloadUrl" -ForegroundColor Cyan
 Invoke-WebRequest -Uri $downloadUrl -OutFile $zip
 Expand-Archive -Path $zip -DestinationPath $extract -Force
 
-$serverUrl = if ($env:MINDRON_SERVER_URL) { $env:MINDRON_SERVER_URL } else { "http://192.168.1.82:18080" }
+$serverUrl = if ($env:MINDRON_SERVER_URL) { $env:MINDRON_SERVER_URL } else { "http://192.168.1.82:6969" }
 $workerName = if ($env:MINDRON_WORKER_NAME) { $env:MINDRON_WORKER_NAME } else { $env:COMPUTERNAME }
 $workerType = if ($env:MINDRON_WORKER_TYPE) { $env:MINDRON_WORKER_TYPE } else { "office_pc" }
 $basePort = if ($env:MINDRON_BASE_PORT) { [int]$env:MINDRON_BASE_PORT } else { 15100 }
