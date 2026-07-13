@@ -1,5 +1,7 @@
 $ErrorActionPreference = "Stop"
 
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
 $repo = "mindronserver/AI_Worker_Release"
 $tag = "windows-agent-latest"
 $asset = "MindronAiWorkerAgent-windows.zip"
@@ -13,7 +15,7 @@ New-Item -ItemType Directory -Force $extract | Out-Null
 
 $downloadUrl = "https://github.com/$repo/releases/download/$tag/$asset"
 Write-Host "Downloading $downloadUrl" -ForegroundColor Cyan
-Invoke-WebRequest -Uri $downloadUrl -OutFile $zip
+Invoke-WebRequest -UseBasicParsing -Uri $downloadUrl -OutFile $zip
 Expand-Archive -Path $zip -DestinationPath $extract -Force
 
 $serverUrl = if ($env:MINDRON_SERVER_URL) { $env:MINDRON_SERVER_URL } else { "http://192.168.1.82:6969" }
